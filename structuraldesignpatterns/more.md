@@ -1,0 +1,3 @@
+- https://dudewho.codes/adapter-pattern-in-go/
+- https://rolandsdev.blog/posts/the-adapter-pattern-in-go/
+- https://github.com/htmfilho/blog-examples/blob/b2f9e8b69cfe2d08befc78ee428859bccdeea686/caching/caching_test.go
