@@ -1,7 +1,7 @@
 package shared
 
 type TreeNode struct {
-	Value interface{}
+	Value int
 	Left  *TreeNode
 	Right *TreeNode
 }
