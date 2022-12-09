@@ -1,4 +1,4 @@
-package strutils
+package shared
 
 import (
 	"strings"
