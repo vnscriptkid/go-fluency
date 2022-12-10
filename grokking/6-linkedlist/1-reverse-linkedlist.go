@@ -1,8 +1,6 @@
-package main
+package grokking
 
-import (
-	"github.com/vnscriptkid/go-fluency/grokking/shared"
-)
+import "github.com/vnscriptkid/go-fluency/grokking/shared"
 
 func reverse(head *shared.Node) *shared.Node {
 	// nil<-2 <- 4    6 -> 8 -> 10 -> nil
