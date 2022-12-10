@@ -3,6 +3,7 @@ package grokking
 import "testing"
 
 func TestOrderAgnosticBst(t *testing.T) {
+	// TC 1
 	arr := []int{4, 6, 10}
 	r := orderAgnosticBst(arr, 10)
 
@@ -17,7 +18,7 @@ func TestOrderAgnosticBst(t *testing.T) {
 		panic("Expect r == 4")
 	}
 
-	// TC 2
+	// TC 3
 	r = orderAgnosticBst([]int{10, 6, 4}, 10)
 
 	if r != 0 {
