@@ -36,5 +36,46 @@ func topDown(weights []int, profits []int, capacity int) int {
 }
 
 func bottomUp(weights []int, profits []int, capacity int) int {
-	return 0
+	// bottomUp([]int{2, 3, 1, 4}, []int{4, 5, 3, 7}, 5)
+
+	//       0  1  2  3  4  5
+	//(2,4)  0  0  4  4  4  4
+	//(3,5)  0  0  4  5  5  9
+	//(1,3)  0  3  4  7  8  9
+	//(4,7)  0  3  4  7  8  10
+
+	// Init matrix
+	rows := len(weights)
+	cols := capacity + 1
+
+	m := make([][]int, rows)
+
+	for i := range m {
+		m[i] = make([]int, cols)
+	}
+
+	// Init first row
+	for i := 1; i <= capacity; i++ {
+		if i >= weights[0] {
+			m[0][i] = profits[0]
+		}
+	}
+
+	// Fill matrix
+	for i := 1; i < rows; i++ {
+		for cap := 1; cap <= capacity; cap++ {
+			// First choice: Skip cur item
+			p1 := m[i-1][cap]
+
+			p2 := 0
+
+			if cap >= weights[i] {
+				p2 = profits[i] + m[i-1][cap-weights[i]]
+			}
+
+			m[i][cap] = int(math.Max(float64(p1), float64(p2)))
+		}
+	}
+
+	return m[rows-1][cols-1]
 }
