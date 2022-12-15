@@ -1,4 +1,4 @@
-package main
+package grokking
 
 import (
 	"container/list"
@@ -7,7 +7,7 @@ import (
 	"github.com/vnscriptkid/go-fluency/grokking/shared"
 )
 
-func traverse(root *shared.TreeNode) [][]int {
+func levelOrderTraverse(root *shared.TreeNode) [][]int {
 
 	result := [][]int{}
 
@@ -66,7 +66,7 @@ func main() {
 	node3 := shared.TreeNode{Value: 3, Left: &node6, Right: &node7}
 	node1 := shared.TreeNode{Value: 1, Left: &node2, Right: &node3}
 
-	result := traverse(&node1)
+	result := levelOrderTraverse(&node1)
 
 	fmt.Println(result)
 }
