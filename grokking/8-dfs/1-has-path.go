@@ -1,4 +1,4 @@
-package main
+package grokking
 
 import (
 	"fmt"
@@ -26,7 +26,7 @@ func hasPath(head *shared.TreeNode, targetSum int) bool {
 	return hasPath(head.Left, targetSum-head.Value) || hasPath(head.Right, targetSum-head.Value)
 }
 
-func main() {
+func TesthasPath() {
 	node4 := shared.TreeNode{Value: 4}
 	node5 := shared.TreeNode{Value: 5}
 	node6 := shared.TreeNode{Value: 6}
