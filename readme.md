@@ -14,3 +14,8 @@ import (
 ```
 - Install first time: `go get github.com/vnscriptkid/go-fluency/grokking/shared`
 - Update latest using: `go get -u github.com/vnscriptkid/go-fluency/grokking/shared`
+
+## tools
+- goimports
+- gopls
+- gocode
