@@ -1,37 +1,10 @@
 package grokking
 
 import (
-	"strconv"
-	"strings"
 	"testing"
 
 	"github.com/vnscriptkid/go-fluency/grokking/grokking/shared"
 )
-
-func ParseLinkedList(str string) *shared.Node {
-	splitted := strings.Split(str, "->")
-
-	var head *shared.Node
-	var prev *shared.Node
-
-	for _, strVal := range splitted {
-		if val, err := strconv.Atoi(strVal); err == nil {
-			node := shared.Node{Value: val}
-
-			if prev == nil {
-				head = &node
-			} else {
-				prev.Next = &node
-			}
-
-			prev = &node
-		} else {
-			// end of list
-		}
-	}
-
-	return head
-}
 
 func TestMiddleOfLinkedList(t *testing.T) {
 	testcases := []struct {
@@ -58,7 +31,7 @@ func TestMiddleOfLinkedList(t *testing.T) {
 
 	for _, tc := range testcases {
 		t.Run(tc.name, func(t *testing.T) {
-			head := ParseLinkedList(tc.input)
+			head := shared.ParseLinkedList(tc.input)
 
 			actual := middleOfLinkedList(head)
 
