@@ -27,3 +27,28 @@ func (n *Node) GetPrinted() string {
 func (n *Node) Print() {
 	fmt.Println(n.GetPrinted())
 }
+
+func ParseLinkedList(str string) *Node {
+	splitted := strings.Split(str, "->")
+
+	var head *Node
+	var prev *Node
+
+	for _, strVal := range splitted {
+		if val, err := strconv.Atoi(strVal); err == nil {
+			node := Node{Value: val}
+
+			if prev == nil {
+				head = &node
+			} else {
+				prev.Next = &node
+			}
+
+			prev = &node
+		} else {
+			// end of list
+		}
+	}
+
+	return head
+}
