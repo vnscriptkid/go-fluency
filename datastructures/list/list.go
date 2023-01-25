@@ -1,4 +1,4 @@
-package main
+package list
 
 import (
 	"container/list" // Doubly-linkedlist

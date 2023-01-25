@@ -1,4 +1,4 @@
-package main
+package twodarrays
 
 import "fmt"
 
