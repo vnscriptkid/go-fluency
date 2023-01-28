@@ -40,6 +40,11 @@ var eatTime = 1 * time.Second   // how long it takes to eatTime
 var thinkTime = 3 * time.Second // how long a philosopher thinks
 var sleepTime = 1 * time.Second // how long to wait when printing things out
 
+var ordering []string
+var orderingLock sync.Mutex
+
+// var orderingLock sync.Mutex
+
 func main() {
 	// print out a welcome message
 	fmt.Println("Dining Philosophers Problem")
@@ -52,13 +57,11 @@ func main() {
 	// print out finished message
 	fmt.Println("The table is empty.")
 
+	fmt.Printf("Dining order is: %v", ordering)
+
 }
 
 func dine() {
-	eatTime = 0 * time.Second
-	sleepTime = 0 * time.Second
-	thinkTime = 0 * time.Second
-
 	// wg is the WaitGroup that keeps track of how many philosophers are still at the table. When
 	// it reaches zero, everyone is finished eating and has left. We add 5 (the number of philosophers) to this
 	// wait group.
@@ -133,7 +136,12 @@ func diningProblem(philosopher Philosopher, wg *sync.WaitGroup, forks map[int]*s
 		forks[philosopher.rightFork].Unlock()
 
 		fmt.Printf("\t%s put down the forks.\n", philosopher.name)
+
 	}
+
+	orderingLock.Lock()
+	ordering = append(ordering, philosopher.name)
+	orderingLock.Unlock()
 
 	// The philosopher has finished eating, so print out a message.
 	fmt.Println(philosopher.name, "is satisified.")
