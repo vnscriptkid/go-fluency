@@ -69,6 +69,10 @@ curl -H 'Content-Type: application/json' -XPUT http://localhost:9200/shakespeare
     - filters vs queries
         - filters: yes/no -> faster
         - queries: relevance
+        
+![image](https://user-images.githubusercontent.com/28957748/215276148-336df223-6884-4624-9f5a-89b2539225c9.png)
+
+![image](https://user-images.githubusercontent.com/28957748/215276112-4e07cd39-af44-40a4-8bd3-d92f8b512afb.png)
 
 ## Datasets
 - https://files.grouplens.org/datasets/movielens/ml-latest-small-README.html
