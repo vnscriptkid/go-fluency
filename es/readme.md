@@ -50,6 +50,25 @@ curl -H 'Content-Type: application/json' -XPUT http://localhost:9200/shakespeare
 - Types
     - Keyword: exact match
     - Text: analyzers applied -> partial match
+- Parent-children
+    - `has_child`
+    - `has_parent`
+- Flattened data type
+    - Why? Avoid mapping explosion
+    - Keyword -> exact match
+
+- Mappings
+    - Explicit: predefined 
+        - Potential exception
+        - _settings: `"index.mapping.ignore_malformed": true` 
+    - Dynamic -> mapping explosion
+        - Solution: dead-letter queue
+
+- Searching
+    - `query > match > title : "hello"`
+    - filters vs queries
+        - filters: yes/no -> faster
+        - queries: relevance
 
 ## Datasets
 - https://files.grouplens.org/datasets/movielens/ml-latest-small-README.html
