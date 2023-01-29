@@ -27,11 +27,11 @@ type Philosopher struct {
 
 // philosophers is list of all philosophers.
 var philosophers = []Philosopher{
-	{name: "0 Plato", leftFork: 4, rightFork: 0},
-	{name: "1 Socrates", leftFork: 0, rightFork: 1},
-	{name: "2 Aristotle", leftFork: 1, rightFork: 2},
-	{name: "3 Pascal", leftFork: 2, rightFork: 3},
-	{name: "4 Locke", leftFork: 3, rightFork: 4},
+	{name: "Plato", leftFork: 4, rightFork: 0},
+	{name: "Socrates", leftFork: 0, rightFork: 1},
+	{name: "Aristotle", leftFork: 1, rightFork: 2},
+	{name: "Pascal", leftFork: 2, rightFork: 3},
+	{name: "Locke", leftFork: 3, rightFork: 4},
 }
 
 // Define a few variables.
@@ -108,21 +108,17 @@ func diningProblem(philosopher Philosopher, wg *sync.WaitGroup, forks map[int]*s
 		// to avoid a logical race condition, which is not detected by the -race flag in tests; if we don't do this,
 		// we have the potential for a deadlock, since two philosophers will wait endlessly for the same fork.
 		// Note that the goroutine will block (pause) until it gets a lock on both the right and left forks.
-		// if philosopher.leftFork > philosopher.rightFork {
-		// 	forks[philosopher.rightFork].Lock()
-		// 	fmt.Printf("\t%s takes the right fork.\n", philosopher.name)
-		// 	forks[philosopher.leftFork].Lock()
-		// 	fmt.Printf("\t%s takes the left fork.\n", philosopher.name)
-		// } else {
-		// 	forks[philosopher.leftFork].Lock()
-		// 	fmt.Printf("\t%s takes the left fork.\n", philosopher.name)
-		// 	forks[philosopher.rightFork].Lock()
-		// 	fmt.Printf("\t%s takes the right fork.\n", philosopher.name)
-		// }
-		forks[philosopher.leftFork].Lock()
-		fmt.Printf("\t%s takes the left fork.\n", philosopher.name)
-		forks[philosopher.rightFork].Lock()
-		fmt.Printf("\t%s takes the right fork.\n", philosopher.name)
+		if philosopher.leftFork > philosopher.rightFork {
+			forks[philosopher.rightFork].Lock()
+			fmt.Printf("\t%s takes the right fork.\n", philosopher.name)
+			forks[philosopher.leftFork].Lock()
+			fmt.Printf("\t%s takes the left fork.\n", philosopher.name)
+		} else {
+			forks[philosopher.leftFork].Lock()
+			fmt.Printf("\t%s takes the left fork.\n", philosopher.name)
+			forks[philosopher.rightFork].Lock()
+			fmt.Printf("\t%s takes the right fork.\n", philosopher.name)
+		}
 
 		// By the time we get to this line, the philosopher has a lock (mutex) on both forks.
 		fmt.Printf("\t%s has both forks and is eating.\n", philosopher.name)
