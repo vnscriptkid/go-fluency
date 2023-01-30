@@ -1,24 +1,35 @@
 package grokking
 
-import "math"
+import (
+	"math"
+	"strconv"
+)
 
-func minSubsetSumDiffRecur(subset []int, curIdx int, curSum int, globalMin *int, total int) {
-	if curIdx == len(subset) {
-		// done with current branch
-		other := total - curSum
+func minSubsetSumDiffRecur(subset []int, curIdx int, curSum int, globalMin *int, total int, cache map[string]int) int {
+	cacheKey := strconv.Itoa(curIdx) + "," + strconv.Itoa(curSum)
 
-		diff := math.Abs(float64(curSum - other))
+	if _, ok := cache[cacheKey]; !ok {
+		if curIdx == len(subset) {
+			// done with current branch
+			other := total - curSum
 
-		if int(diff) < *globalMin {
-			*globalMin = int(diff)
+			diff := math.Abs(float64(curSum - other))
+
+			if int(diff) < *globalMin {
+				*globalMin = int(diff)
+			}
+
+			return *globalMin
 		}
 
-		return
+		minSubsetSumDiffRecur(subset, curIdx+1, curSum+subset[curIdx], globalMin, total, map[string]int{})
+
+		minSubsetSumDiffRecur(subset, curIdx+1, curSum, globalMin, total, map[string]int{})
+
+		cache[cacheKey] = *globalMin
 	}
 
-	minSubsetSumDiffRecur(subset, curIdx+1, curSum+subset[curIdx], globalMin, total)
-
-	minSubsetSumDiffRecur(subset, curIdx+1, curSum, globalMin, total)
+	return cache[cacheKey]
 }
 
 func minSubsetSumDiff(subset []int) int {
@@ -30,7 +41,6 @@ func minSubsetSumDiff(subset []int) int {
 		total += x
 	}
 
-	minSubsetSumDiffRecur(subset, 0, 0, &globalMin, total)
+	return minSubsetSumDiffRecur(subset, 0, 0, &globalMin, total, map[string]int{})
 
-	return globalMin
 }
