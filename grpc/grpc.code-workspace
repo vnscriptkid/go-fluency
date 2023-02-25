@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "server-svc"
+		},
+		{
+			"path": "client-svc"
+		},
+		{
+			"path": "common-lib"
+		},
+		{
+			"path": "docs"
+		}
+	],
+	"settings": {}
+}
