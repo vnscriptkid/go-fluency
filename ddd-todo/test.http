@@ -1,0 +1,14 @@
+###
+GET http://localhost:8080/ping
+
+###
+GET http://localhost:8080/tasks/1
+
+###
+POST http://localhost:8080/tasks
+Content-Type: application/json
+
+{
+    "userID": 1,
+    "title": "new task"
+}
