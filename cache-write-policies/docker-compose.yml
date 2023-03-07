@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  redis:
+    container_name: x-redis
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+  pg:
+    container_name: x-pg
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pg-data:/var/lib/postgresql/data
