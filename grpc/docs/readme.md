@@ -12,3 +12,11 @@
 - Version `ginkgo version`
 - VS Code support `vscode-ginkgo`
 - Gen boilerplate `ginkgo bootstrap`
+
+## gomock
+- Use mockgen go gen mocks: 
+    - `cd client-svc`
+    - `mockgen --destination ./gomocks/hello.go --source=./hello/hello.pb.go --build_flags=--mod=mod`
+
+## Deps
+- See what required a lib: `go mod why -m github.com/golang/mock`

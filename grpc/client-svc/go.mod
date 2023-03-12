@@ -2,7 +2,10 @@ module client-svc
 
 go 1.19
 
+replace github.com/golang/mock => github.com/golang/mock v1.4.3
+
 require (
+	github.com/golang/mock v1.6.0
 	github.com/golang/protobuf v1.5.2
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.27.1
