@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/vnscriptkid/go-fluency/cache_PureWriteThrough/lib"
+	"github.com/vnscriptkid/go-fluency/async_MessageQueue_RabbitMQ/lib"
 )
 
 func main() {
