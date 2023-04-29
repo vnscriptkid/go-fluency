@@ -6,7 +6,7 @@ import (
 	"math/rand"
 	"time"
 
-	shared "github.com/vnscriptkid/go-fluency/patterns_Retry/shared"
+	lib "github.com/vnscriptkid/go-fluency/patterns_Retry/shared/lib"
 )
 
 func exampleFunction() error {
@@ -22,13 +22,13 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 
 	// Choose your desired strategy
-	// strategy := shared.FixedTimeoutStrategy{Timeout: 200 * time.Millisecond}
-	// strategy := shared.IncrementalTimeoutStrategy{InitialTimeout: 200 * time.Millisecond, Increment: 100 * time.Millisecond}
-	strategy := shared.ExponentialBackoffStrategy{InitialBackoff: 200 * time.Millisecond}
+	// strategy := lib.FixedTimeoutStrategy{Timeout: 200 * time.Millisecond}
+	// strategy := lib.IncrementalTimeoutStrategy{InitialTimeout: 200 * time.Millisecond, Increment: 100 * time.Millisecond}
+	strategy := lib.ExponentialBackoffStrategy{InitialBackoff: 200 * time.Millisecond}
 
-	err := shared.Retry(exampleFunction, 5, strategy)
+	err := lib.Retry(exampleFunction, 5, strategy)
 	if err != nil {
-		if errors.Is(err, shared.ErrMaxRetriesReached) {
+		if errors.Is(err, lib.ErrMaxRetriesReached) {
 			fmt.Println("Max retries reached. Giving up.")
 		} else {
 			fmt.Printf("Error: %v\n", err)
