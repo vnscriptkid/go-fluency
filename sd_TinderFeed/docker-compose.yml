@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  tinder_location_tracker:
+    container_name: tinder_location_tracker
+    image: redis:6.2.5
+    ports:
+      - "6379:6379"
