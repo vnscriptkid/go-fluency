@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Shopify/sarama"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -27,6 +28,7 @@ type Paste struct {
 	FileID    string `gorm:"unique"`
 	Content   string
 	ExpiresAt time.Time
+	CreatedAt time.Time
 }
 
 func main() {
@@ -42,6 +44,21 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// Connect to kafka
+	brokerList := []string{"localhost:29092"} // Replace with your Kafka broker address
+
+	producer, err := sarama.NewSyncProducer(brokerList, nil)
+
+	if err != nil {
+		log.Fatalf("Error creating producer: %s", err)
+	}
+
+	defer func() {
+		if err := producer.Close(); err != nil {
+			log.Fatalf("Error closing producer: %s", err)
+		}
+	}()
 
 	// AutoMigrate the Paste struct
 	db.AutoMigrate(&Paste{})
@@ -76,7 +93,13 @@ func main() {
 		tx := db.Begin()
 
 		// Store metadata in Postgres
-		paste := Paste{UserID: userID, FileID: fileID, Content: content, ExpiresAt: time.Now().Add(time.Hour * 24 * 7) /*in 7 days*/}
+		paste := Paste{
+			UserID:    userID,
+			FileID:    fileID,
+			Content:   content,
+			ExpiresAt: time.Now().Add(time.Hour * 24 * 7), /*in 7 days*/
+			CreatedAt: time.Now(),
+		}
 
 		err := tx.Create(&paste).Error
 
@@ -148,15 +171,16 @@ func main() {
 				// and the failure to send data to Kafka doesn't impact the client
 			} else {
 				// Send client data to Kafka
-				// msg := &kafka.ProducerMessage{
-				// 	Topic: "client-data",
-				// 	Value: kafka.StringEncoder(clientDataJSON),
-				// }
 
-				// _, _, err = kafkaProducer.SendMessage(msg)
-				// if err != nil {
-				// 	log.Printf("Failed to send message to Kafka: %v", err)
-				// }
+				_, _, err = producer.SendMessage(&sarama.ProducerMessage{
+					Topic: "client-data",
+					Value: sarama.StringEncoder(clientDataJSON),
+				})
+				if err != nil {
+					log.Fatalf("Error sending message: %s", err)
+					return
+				}
+
 				log.Printf("Client data: %s", clientDataJSON)
 			}
 		}()

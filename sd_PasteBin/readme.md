@@ -13,6 +13,14 @@
 - TODO: try other alternatives that involve create policies, then attach to user
     - https://youtu.be/NZElg91l_ms
 
+## ES/Kibana
+- Kibana UI: http://localhost:5601/app/home#/
+- Visualize > Create index pattern
+- Create visualization `pastes accessed every hrs`
+    - chart type: bar (vertical)
+    - x-axis: [field, dateTime], [fn, date histogram]
+    - y-axis: [field, records], [fn, count]
+
 ## Misc
 - Response headers
     - `Content-Type: application/octet-stream`:
