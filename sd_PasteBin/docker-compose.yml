@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  pastebin_pg:
+    image: postgres:14.5
+    container_name: pastebin_pg
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: metadata
+    ports:
+      - "5435:5432"
