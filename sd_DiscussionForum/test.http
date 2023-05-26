@@ -1,0 +1,100 @@
+### Post 1
+POST http://localhost:8080/posts
+Content-Type: application/json
+
+{
+    "title": "#1 My first post",
+    "content": "Hello world!",
+    "author": "thanh",
+    "tags": ["java", "spring"]
+}
+
+### Post 2
+POST http://localhost:8080/posts
+Content-Type: application/json
+
+{
+    "title": "#2 My second post",
+    "content": "Hi there",
+    "author": "linh",
+    "tags": ["c++", "spring"]
+}
+
+### Post 3
+POST http://localhost:8080/posts
+Content-Type: application/json
+
+{
+    "title": "#3 My third post",
+    "content": "Bye bye",
+    "author": "bich",
+    "tags": ["python", "golang"]
+}
+
+### Post 4
+POST http://localhost:8080/posts
+Content-Type: application/json
+
+{
+    "title": "#4 My fourth post",
+    "content": "Good night",
+    "author": "tuan anh",
+    "tags": ["c#"]
+}
+
+### Post 5
+POST http://localhost:8080/posts
+Content-Type: application/json
+
+{
+    "title": "#5 My fourth post",
+    "content": "Good morning",
+    "author": "thanh phuong",
+    "tags": ["html", "css"]
+}
+
+
+### Comment 1
+POST http://localhost:8080/comments
+Content-Type: application/json
+
+{
+    "content": "comment example 1",
+    "author": "thanh"
+}
+
+### Comment 2
+POST http://localhost:8080/comments
+Content-Type: application/json
+
+{
+    "content": "comment example 2",
+    "author": "linh"
+}
+
+### Comment 3
+POST http://localhost:8080/comments
+Content-Type: application/json
+
+{
+    "content": "comment example 3",
+    "author": "bich"
+}
+
+### Comment 4
+POST http://localhost:8080/comments
+Content-Type: application/json
+
+{
+    "content": "comment example 4",
+    "author": "tuan anh"
+}
+
+### Comment 5
+POST http://localhost:8080/comments
+Content-Type: application/json
+
+{
+    "content": "comment example 5",
+    "author": "thanh phuong"
+}
