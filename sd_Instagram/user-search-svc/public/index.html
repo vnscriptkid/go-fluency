@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search as You Type</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <input type="text" id="searchInput" placeholder="Search...">
+  <ul id="searchResults"></ul>
+
+  <script>
+    $(document).ready(function() {
+      var timeout = null;
+      var searchInput = $('#searchInput');
+      var searchResults = $('#searchResults');
+
+      searchInput.on('input', function() {
+        clearTimeout(timeout);
+        timeout = setTimeout(function() {
+          var searchTerm = searchInput.val();
+
+          if (searchTerm.trim() !== '') {
+            executeSearch(searchTerm);
+          } else {
+            searchResults.empty();
+          }
+        }, 500);
+      });
+
+      function executeSearch(searchTerm) {
+        $.ajax({
+          type: 'GET',
+          url: `/search?query=${searchTerm}`,
+          contentType: 'application/json',
+          success: function(data) {
+            displayResults(data.users);
+          },
+          error: function(xhr, status, error) {
+            console.error(error);
+          }
+        });
+      }
+
+      function displayResults(list) {
+        searchResults.empty();
+
+        
+        if (list.length === 0) {
+            searchResults.append('<li>No results found.</li>');
+        } else {
+            console.log(list)
+          $.each(list, function(idx, item) {
+            searchResults.append('<li>' + item.username + ' | ' + item.name + ' | ' + item.email + '</li>');
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html>
