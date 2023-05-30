@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HLS Player</title>
+    <style>
+        video {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <video id="videoPlayer" controls></video>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script>
+        // Check if HLS.js library is loaded
+        if (Hls.isSupported()) {
+            // HLS playlist URL
+            const playlistURL = 'http://localhost:8080/playlist.m3u8';
+
+            // HLS player initialization
+            const video = document.getElementById('videoPlayer');
+            const hls = new Hls();
+            hls.loadSource(playlistURL);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                // Video ready to play
+                video.play().catch((error) => {
+                    console.error('Failed to play video:', error.message);
+                });
+            });
+        } else {
+            console.error('HLS is not supported.');
+        }
+    </script>
+</body>
+</html>
