@@ -15,3 +15,11 @@
 - 09:04:00 -> 09_00/worker-2.txt
 - 09:04:59 -> 09_00/worker-2.txt
 - 09:05:00 -> 09_05/worker-1.txt
+
+## Spark/S3
+- Version of deps inside spark containers
+    - `cd $SPARK_HOME/jars/`
+    - `ls hadoop-aws*.jar`
+    - `ls aws-java-sdk-bundle-*.jar`
+- https://github.com/bitnami/containers/tree/main/bitnami/spark
+- https://youtu.be/AzbPeJmbw2U
