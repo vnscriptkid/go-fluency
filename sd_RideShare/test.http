@@ -1,0 +1,9 @@
+###
+POST http://localhost:8080/location
+Content-Type: application/json
+
+{
+    "driver_id": 2,
+    "lat": 100,
+    "lng": 71.2
+}
