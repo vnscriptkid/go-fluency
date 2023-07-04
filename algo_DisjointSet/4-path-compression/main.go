@@ -1,4 +1,4 @@
-package QuickUnion
+package PathCompression
 
 type IDisjointSet interface {
 	union(x int, y int)
@@ -36,11 +36,18 @@ func (s *dSet) union(x int, y int) {
 
 // Time: O(N) in case of skewed tree
 func (s *dSet) find(x int) int {
+	// Recursive approach: Not only find the root, it also reconstruct the tree
+	// so that all nodes in this group point to the root
 	if s.root[x] == x {
 		return x
 	}
 
-	return s.find(s.root[x])
+	r := s.find(s.root[x])
+
+	// Path compression
+	s.root[x] = r
+
+	return r
 }
 
 // Time: O(N)
