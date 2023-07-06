@@ -1,0 +1,12 @@
+###
+POST http://localhost:8000/signin
+Content-Type: application/json
+
+{
+    "username": "user",
+    "password": "pass"
+}
+
+###
+GET http://localhost:8000/welcome
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJleHAiOjE2ODg2NTUxMTV9.Hq3wejveOBeg8-48L7VmcBsJbq-cZYyo0U_UyBxeO4s
