@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  rbac:
+    image: postgres:14.5
+    container_name: rbac
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: rbac
+    ports:
+      - "5435:5432"
