@@ -15,3 +15,6 @@
 - By dropping requests coming from a user that has exceeded a limit
     - Block requests before they reach the application code
     - There's still a cost to process the request to determine if it should be dropped. But it's much lower than processing the request in the application code.
+
+## Refs:
+- https://youtu.be/TCTkkVoY3-I

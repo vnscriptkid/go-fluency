@@ -1,0 +1,12 @@
+## Targets
+- Run first go program: `go run .`
+- Read from env using `os` standard lib
+- Print to console using `fmt`
+- Build the program into binary file then run it
+  - `go build -o hellouser`
+  - `./hellouser`
+- reFormat the code `gofmt -w -s main.go`
+  - `-w`: write back to file (if not, print output to console)
+  - `-s`: simplify
+    - Input: `users := []*User{u, &User{name: "someone", age: 30}}`
+    - Simplified: `users := []*User{u, {name: "someone", age: 30}}`

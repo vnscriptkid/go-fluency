@@ -1,4 +1,4 @@
-## Step-by-step
+## Setup
 ```bash
 docker build -t vnscriptkid/helloworld:1.0 .
 
@@ -18,3 +18,12 @@ istioctl dashboard jaeger
 
 istioctl dashboard kiali
 ```
+
+- Cleanup: 
+    - `kubectl delete mutatingwebhookconfiguration istio-sidecar-injector`
+    - `istioctl manifest generate | kubectl delete -f -`
+    - Check pods again: `kubectl get pods -n istio-system`
+    - Check svc again: `kubectl get services -n istio-system`
+    - `kubectl get mutatingwebhookconfigurations`
+    - `kubectl delete mutatingwebhookconfigurations <name-of-the-istio-webhook>`
+

@@ -10,14 +10,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-func main() {
-	// Initialize a gRPC connection
-	conn, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
-	if err != nil {
-		log.Fatalf("Failed to connect: %v", err)
-	}
-	defer conn.Close()
-
+func InitClient(conn interface{}) pb.ProductServiceClient {
 	// Initialize your gRPC client
 	productClient := pb.NewProductServiceClient(conn)
 
@@ -39,6 +32,19 @@ func main() {
 		// If trial fails, the circuit will open again for another 5 seconds
 		SleepWindow: 5000,
 	})
+
+	return productClient
+}
+
+func main() {
+	// Initialize a gRPC connection
+	conn, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
+	if err != nil {
+		log.Fatalf("Failed to connect: %v", err)
+	}
+	defer conn.Close()
+
+	productClient := InitClient(conn)
 
 	output := make(chan *pb.ProductResponse, 1)
 	errors := hystrix.Go("GetProduct", func() error {

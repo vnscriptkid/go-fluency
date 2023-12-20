@@ -69,10 +69,34 @@ curl -H 'Content-Type: application/json' -XPUT http://localhost:9200/shakespeare
     - filters vs queries
         - filters: yes/no -> faster
         - queries: relevance
+- Fuziness
+- Partial matching
+    - prefix (year): specific case of wildcard
+    - wildcard
+    - regex
+- Search as you type
+    - Query time
+        - `match_phrase_prefix`
+        - `slop`
+    - Ngram
+        - Create analyzer
+    - Completion suggesters
+    - `search_as_you_type` type
+
+- Agg
+    - ages: most frequently occurring values
         
 ![image](https://user-images.githubusercontent.com/28957748/215276148-336df223-6884-4624-9f5a-89b2539225c9.png)
 
 ![image](https://user-images.githubusercontent.com/28957748/215276112-4e07cd39-af44-40a4-8bd3-d92f8b512afb.png)
+
+- Pagination
+    - from (0-based idx), size
+    - Have upperbound not to kill perf
+
+- Sort
+    - number
+    - text field: use raw sub field of type keyword
 
 ## Datasets
 - https://files.grouplens.org/datasets/movielens/ml-latest-small-README.html

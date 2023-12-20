@@ -42,6 +42,7 @@ def index():
 
 
         # Perform text clustering using K-means algorithm
+        # identify the data into 5 clusters
         kmeans = KMeans(n_clusters=5, init='k-means++', max_iter=100, n_init=1)
         kmeans.fit(tfidf)
 

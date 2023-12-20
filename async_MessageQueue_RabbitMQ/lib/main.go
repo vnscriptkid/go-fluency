@@ -3,6 +3,7 @@ package lib
 import (
 	"fmt"
 	"log"
+	"strconv"
 	"time"
 
 	amqp "github.com/rabbitmq/amqp091-go"
@@ -68,7 +69,7 @@ func Exec() {
 	}()
 
 	// Publisher
-	for i := 7; i <= 7; i++ {
+	for i := 1; i <= 10; i++ {
 		body := fmt.Sprintf("Message %d", i)
 		err = ch.Publish(
 			"",     // Exchange: "" (empty string means the default exchange)
@@ -79,6 +80,7 @@ func Exec() {
 				DeliveryMode: amqp.Persistent, // the message will be stored to disk and survive broker restarts
 				ContentType:  "text/plain",    // the message body is plain text
 				Body:         []byte(body),    // the message body
+				Expiration:   strconv.Itoa(int((30 * time.Second).Seconds() * 1000)),
 			})
 		failOnError(err, "Failed to publish a message")
 		log.Printf("Sent a message: %s", body)

@@ -1,0 +1,236 @@
+{
+	"folders": [
+		{
+			"path": "ddd-todo"
+		},
+		{
+			"path": "jaeger-monolith"
+		},
+		{
+			"path": "Grokking_Coding"
+		},
+		{
+			"path": "low-level-sd"
+		},
+		{
+			"path": "grpc-image-upload"
+		},
+		{
+			"path": "grpc"
+		},
+		{
+			"path": "cache-write-policies"
+		},
+		{
+			"path": "stripe-int"
+		},
+		{
+			"path": "patterns_MapReduce"
+		},
+		{
+			"path": "patterns_SagaOrchestration"
+		},
+		{
+			"path": "patterns_IdempotentAPI"
+		},
+		{
+			"path": "patterns_TransactionalOutbox"
+		},
+		{
+			"path": "patterns_MaterializedView"
+		},
+		{
+			"path": "dependency_injection"
+		},
+		{
+			"path": "Database_IsolationLevels_PG"
+		},
+		{
+			"path": "patterns_EventSourcingCQRS"
+		},
+		{
+			"path": "Database_ReadReplicas"
+		},
+		{
+			"path": "Gorm_Playground"
+		},
+		{
+			"path": "patterns_PipesAndFilters"
+		},
+		{
+			"path": "patterns_ScatterGather"
+		},
+		{
+			"path": "patterns_SagaChoreography"
+		},
+		{
+			"path": "patterns_SideCar"
+		},
+		{
+			"path": "algo_DisjointSet"
+		},
+		{
+			"path": "algo_graph_bfs"
+		},
+		{
+			"path": "algo_graph_dfs"
+		},
+		{
+			"path": "async_MessageQueue_RabbitMQ"
+		},
+		{
+			"path": "async_MessageStream_Kafka"
+		},
+		{
+			"path": "bigdata_LambdaAWS"
+		},
+		{
+			"path": "bytes_auth"
+		},
+		{
+			"path": "bytes_ClusteringAlgorithm"
+		},
+		{
+			"path": "bytes_DecisionTree"
+		},
+		{
+			"path": "bytes_GatewayBlacklist"
+		},
+		{
+			"path": "bytes_GatewayGRPC"
+		},
+		{
+			"path": "bytes_ScalingWebsocket"
+		},
+		{
+			"path": "cache_PureWriteThrough"
+		},
+		{
+			"path": "communications_HttpServer"
+		},
+		{
+			"path": "communications_WebSocket"
+		},
+		{
+			"path": "concurrency"
+		},
+		{
+			"path": "Database_ManualSharding"
+		},
+		{
+			"path": "Database_ReadReplicas_MySQL"
+		},
+		{
+			"path": "Database_Sharding_Citus"
+		},
+		{
+			"path": "datastructures"
+		},
+		{
+			"path": "deployment_RollingDepl"
+		},
+		{
+			"path": "designpattern_StateMachine"
+		},
+		{
+			"path": "es"
+		},
+		{
+			"path": "go_svc"
+		},
+		{
+			"path": "grokking"
+		},
+		{
+			"path": "patterns_BackendForFrontend"
+		},
+		{
+			"path": "patterns_DeadLetterQueue"
+		},
+		{
+			"path": "patterns_Retry"
+		},
+		{
+			"path": "pubsub_Redis_HelloWorld"
+		},
+		{
+			"path": "resiliency_CircuitBreaker"
+		},
+		{
+			"path": "resiliency_CircuitBreaker_Hystrix"
+		},
+		{
+			"path": "resiliency_LeaderElection"
+		},
+		{
+			"path": "resiliency_LoadBalancer"
+		},
+		{
+			"path": "scaling_BigDataProcessing_Spark"
+		},
+		{
+			"path": "scaling_BlobStorage"
+		},
+		{
+			"path": "scaling_BloomFilters"
+		},
+		{
+			"path": "scaling_ConsistentHashing"
+		},
+		{
+			"path": "sd_DiscussionForum"
+		},
+		{
+			"path": "sd_Ecommerce"
+		},
+		{
+			"path": "sd_FraudDetection"
+		},
+		{
+			"path": "sd_Instagram"
+		},
+		{
+			"path": "sd_LogAnalysis"
+		},
+		{
+			"path": "sd_MaskAbuse"
+		},
+		{
+			"path": "sd_NotificationService"
+		},
+		{
+			"path": "sd_PasteBin"
+		},
+		{
+			"path": "sd_ProductListing"
+		},
+		{
+			"path": "sd_RateLimiter"
+		},
+		{
+			"path": "sd_RideShare"
+		},
+		{
+			"path": "sd_TinderFeed"
+		},
+		{
+			"path": "sd_TinyURL"
+		},
+		{
+			"path": "sd_TypeAheadSvc"
+		},
+		{
+			"path": "sd_VOD_StreamingSvc"
+		},
+		{
+			"path": "structuraldesignpatterns"
+		},
+		{
+			"path": "component_messaging"
+		},
+		{
+			"path": "daily_tasks"
+		}
+	],
+	"settings": {}
+}
