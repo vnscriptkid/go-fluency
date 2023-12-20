@@ -9,10 +9,10 @@
 ## Services
 - Location tracker
     - Knows where user located on earth based on long/lat
-        - Users proactively send location upon login
+        - Users proactively send location each 30s
     - Can answer who are the users nearby
     - DB: Redis
-        - Load (reads) can be high -> use case for read-replicas
+        - Load (write/reads) can be high -> use case for sharding
 
 ## Geopartial playground
 - Hanoi: Long 105.804817 / Lat 21.028511
@@ -23,3 +23,10 @@
     - `GETDIST locations "hanoi" "hcm" km`
 - Get the locations within a certain radius of a given location
     - `GEORADIUS locations 105.804817 21.028511 1000 km`
+
+## Mongodb sharding
+- https://github.com/minhhungit/mongodb-cluster-docker-compose/tree/master
+
+## TODOs
+- Measure space between set and bloomfilters as more data is added
+
