@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  master:
+    container_name: citus_master
+    image: 'citusdata/citus:postgres_14'
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+
+  worker1:
+    container_name: citus_worker1
+    image: 'citusdata/citus:postgres_14'
+    links:
+      - master
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+
+  worker2:
+    container_name: citus_worker2
+    image: 'citusdata/citus:postgres_14'
+    links:
+      - master
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
