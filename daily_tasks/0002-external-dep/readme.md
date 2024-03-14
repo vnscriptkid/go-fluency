@@ -1,4 +1,17 @@
 ## Targets
+- Create simple CLI app that allows getting input from user through CLI with no external libs
+- Simple input validation
+
+## Exercise
+- Init go module
+- Get hash lib from "github.com/alexellis/hmac"
+- Read user input from CLI using `flag.StringVar` and `flag.Parse` and store in local variables
+  - message
+  - secret
+- Do simple validation to make sure message and secret are not empty
+- Sign message using `hmac` lib
+- Print out the result using string interpolation
+  - Make sure to use correct format for the result (especially the hash part)
 
 ## QnA
 - Special env vars: GOPATH
