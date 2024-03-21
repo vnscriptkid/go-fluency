@@ -1,6 +1,0 @@
-POST http://localhost:8080/search
-Content-Type: application/json
-
-{
-    "keyword": "well done"
-}

@@ -1,5 +1,0 @@
-###
-GET http://localhost:8080/resource?username=john
-
-###
-POST http://localhost:8080/assign-role

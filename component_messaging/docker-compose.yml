@@ -1,8 +1,0 @@
-version: '3.9'
-
-services:
-  redis_1:
-    container_name: redis-messaging
-    image: redis:6.2.5
-    ports:
-      - "6375:6379"

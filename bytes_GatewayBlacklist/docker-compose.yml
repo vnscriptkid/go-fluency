@@ -1,8 +1,0 @@
-version: '3.9'
-
-services:
-  redis_blacklist:
-    container_name: redis_blacklist
-    image: redis:6.2.5
-    ports:
-      - "6376:6379"
