@@ -59,10 +59,10 @@ func ShipOrder(shipper Shipper, o *Order) error {
 	return shipper.ShipOrder(o)
 }
 
-// LogisticsSystem `composes` CustomOrderProcessor and CustomShipper to manage the logistics
+// HighLevelSystem `composes` CustomOrderProcessor and CustomShipper to manage the logistics
 // This struct combines the functionalities of both CustomOrderProcessor and CustomShipper by embedding these types
 // It represents a higher-level system that can manage the complete lifecycle of an order from processing to shipping.
-type LogisticsSystem struct {
+type HighLevelSystem struct {
 	OrderProcessor
 	Shipper
 }
@@ -74,6 +74,7 @@ type OrderProcessorShipper interface {
 }
 
 // ManageOrder takes an order and handles its processing and shipping
+// VARIANT 1: Polymorphic
 func ManageOrder(orderProcessorShipper OrderProcessorShipper, o *Order) error {
 	if err := ProcessOrder(orderProcessorShipper, o); err != nil {
 		return err
@@ -84,12 +85,36 @@ func ManageOrder(orderProcessorShipper OrderProcessorShipper, o *Order) error {
 	return nil
 }
 
+// VARIATION 2: Non-polymorphic
+func ManageOrder2(highLevelSystem *HighLevelSystem, o *Order) error {
+	if err := ProcessOrder(highLevelSystem, o); err != nil {
+		return err
+	}
+	if err := ShipOrder(highLevelSystem, o); err != nil {
+		return err
+	}
+	return nil
+}
+
+// VARIATION 3: Polymorphic again. MOST PRECISE APPROACH
+func ManageOrder3(orderProcessor OrderProcessor, shipper Shipper, o *Order) error {
+	if err := ProcessOrder(orderProcessor, o); err != nil {
+		return err
+	}
+	if err := ShipOrder(shipper, o); err != nil {
+		return err
+	}
+	return nil
+}
+
 func main() {
-	ls := &LogisticsSystem{
+	ls := &HighLevelSystem{
 		OrderProcessor: &CustomOrderProcessor{},
 		Shipper:        &CustomShipper{},
 	}
 	order := &Order{ID: "1234", Item: "Book", Quantity: 1}
 
 	ManageOrder(ls, order)
+	ManageOrder2(ls, order)
+	ManageOrder3(&CustomOrderProcessor{}, &CustomShipper{}, order)
 }
